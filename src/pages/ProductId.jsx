@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
+import ProductIdInfo from '../components/ProductId/ProductIdInfo'
+import SliderImg from '../components/ProductId/SliderImg'
+import SimilarProducts from '../components/ProductId/SimilarProducts'
 
 const ProductId = () => {
 
@@ -13,11 +16,12 @@ const ProductId = () => {
         getProductById(id)
     }, [])
     
-    console.log(product);
-
+    //console.log(product);
   return (
     <div>
-
+        <SliderImg product={product}/>
+       <ProductIdInfo product={product}/>
+       <SimilarProducts product={product} />
     </div>
   )
 }
