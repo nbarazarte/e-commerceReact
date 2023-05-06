@@ -10,6 +10,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 
 
+
 //import { useDispatch, useSelector } from 'react-redux'
 
 function App() {
@@ -23,7 +24,8 @@ useEffect(() => {
 }, [])
 
 
-//console.log(productsGlobal);
+
+
 
 
   return (

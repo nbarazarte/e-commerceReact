@@ -2,6 +2,7 @@ import React from 'react'
 import useFetch from '../hooks/useFetch'
 import { useForm } from 'react-hook-form'
 import useAuthentication from '../hooks/useAuthentication'
+import defaultRegisterValues from '../components/utils/defaultRegisterValues'
 
 const Register = () => {
 
@@ -11,6 +12,7 @@ const Register = () => {
 
     const sumit = data => {
         createNewUser(data)
+        reset(defaultRegisterValues)
 
     }
 
