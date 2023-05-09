@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import useCrudCart from '../../hooks/useCrudCart'
 
 const ProductIdInfo = ({product}) => {
 
     //console.log(product);
+
+    const { addProductToCard } = useCrudCart()
 
     const [quantity, setQuantity] = useState(1)
 
@@ -18,6 +21,17 @@ const ProductIdInfo = ({product}) => {
             setQuantity(quantity - 1)
         }
     }
+
+    const handleAddToCart = () => {
+        const data = {
+            quantity,
+            productId:product.id
+        }
+
+        addProductToCard(data)
+    }
+
+
 
   return (
     <section>
@@ -38,7 +52,7 @@ const ProductIdInfo = ({product}) => {
                 </div>
                 
             </div>
-            <button>Add to Cart<i className='bx bx-cart'></i> </button>
+            <button onClick={handleAddToCart}>Add to Cart<i className='bx bx-cart'></i> </button>
         </footer>
     </section>
   )
