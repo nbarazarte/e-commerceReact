@@ -1,3 +1,6 @@
+.app {
+   /* height: 100vh; */
+}
 .header {
     background-color: white;
     border: solid 1 #aaa;
@@ -8,4 +11,48 @@
     z-index: 999999;
     position: fixed;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
 }
+
+.header h1 {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 1.5rem;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.header__options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-size: 1.4em;
+}
+
+.header__options .bx {
+    color: #aaa;
+}
+
+.header__options .bx:hover {
+    color: gray;
+}
+
+.footer__app {
+    background-color: #3C3C3B;
+    color: white;
+    height: 200px;
+    width: 100%;
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }

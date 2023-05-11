@@ -12,7 +12,7 @@ const ProductInCart = ({prodCart}) => {
         deleteProductFromCart(prodCart.id)
     }
 
-
+console.log(prodCart);
   return (
     <article>
         <header>
@@ -34,7 +34,7 @@ const ProductInCart = ({prodCart}) => {
                 <span>
                     SubTotal:
                 </span>
-                <span>{prodCart.product.price}</span>
+                <span>{prodCart.product.price * prodCart.quantity}</span>
             </div>
         </footer>
     </article>

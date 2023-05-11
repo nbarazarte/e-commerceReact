@@ -3,6 +3,7 @@ import useFetch from '../hooks/useFetch'
 import { useForm } from 'react-hook-form'
 import useAuthentication from '../hooks/useAuthentication'
 import defaultRegisterValues from '../components/utils/defaultRegisterValues'
+import '../components/Authentication/styles/register.css'
 
 const Register = () => {
 
@@ -13,34 +14,36 @@ const Register = () => {
     const sumit = data => {
         createNewUser(data)
         reset(defaultRegisterValues)
-
     }
 
   return (
-   <form onSubmit={handleSubmit(sumit)}>
-    <h1>Create a new User</h1>
-    <div>
+    <div className="register">
+        
+   <form className='register__form' onSubmit={handleSubmit(sumit)}>
+    <h1>Sign Up</h1>
+    <div className='register__fields'>
         <label htmlFor="firstName">First Name</label>
-        <input {...register('firstName')} type="text" id='firstName' />
+        <input {...register('firstName')} type="text" id='firstName' placeholder='Joe'  />
     </div>
-    <div>
+    <div className='register__fields'>
         <label htmlFor="lasttName">Last Name</label>
-        <input {...register('lastName')} type="text" id='lasttName' />
+        <input {...register('lastName')} type="text" id='lasttName' placeholder='Black' />
     </div>
-    <div>
+    <div className='register__fields'>
         <label htmlFor="email">Email</label>
-        <input {...register('email')} type="text" id='email' />
+        <input {...register('email')} type="text" id='email' placeholder='name@domain.com' />
     </div>
-    <div>
+    <div className='register__fields'>
         <label htmlFor="password">Password</label>
-        <input {...register('password')}  type="text" id='password' />
+        <input {...register('password')}  type="text" id='password' placeholder='password' />
     </div>
-    <div>
-        <label htmlFor="phone">Phone</label>
-        <input {...register('phone')}  type="tel" id='phone' />
+    <div className='register__fields'>
+        <label htmlFor="phone">Phone(10 characters)</label>
+        <input {...register('phone')}  type="tel" id='phone' placeholder='12345678' />
     </div>
     <button>Register</button>
    </form>
+   </div>
   )
 }
 

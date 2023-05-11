@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import CardProduct from '../components/Home/CardProduct'
 import '../components/Home/styles/HomeProducts.css'
+import FilterCategory from '../components/FilterCategories/FilterCategory'
+import FilterByPrice from '../components/Home/FilterByPrice'
 
 const Home = () => {
 
@@ -9,27 +11,79 @@ const Home = () => {
 
     //console.log(productsGlobal);
 
+  const inputValue = useRef()
+  
+const [otro, setOtro] = useState('')
+const [fromTo, setFromTo] = useState({
+  from:0,
+  to:Infinity
+})
+//console.log(fromTo);
+
+
+  const handleChangeInput = () => {
+    console.log(inputValue.current.value);
+    setOtro(inputValue.current.value.toLowerCase().trim())
+  }
+
+  const productFilter = productsGlobal
+  ?.filter(prod => prod.title.toLowerCase().includes(otro))
+  .filter(prod => {
+/*     const from = Number(fromTo.from)
+    const to = Number(fromTo.to) */
+
+    const from = +fromTo.from
+    const to = +fromTo.to  
+    const price = +prod.price
+
+    if(from && to){
+      //return price >= from && price <= to
+      return from <= price && price <= to
+    }
+
+    if(from && !to){
+      //return price >= from && price <= to
+      return from <= price
+    }
+
+    if(!from && to){
+      //return price >= from && price <= to
+      return price <= to
+    }
+
+    if(!from && !to){
+      //return price >= from && price <= to
+      return true
+    }
+
+  })
+
+
+
   return (
-    <>
-      <div className='product-container'>
+    <main className='home'>
+
+     <input className='home__input' ref={inputValue} type="text" onChange={handleChangeInput} placeholder='What are you looking for?' />
+      
+      <div className='home__container'>
+
+        <div className='product-filter'>
+          <FilterCategory />   
+          <br /> 
+          <FilterByPrice setFromTo={setFromTo} />
+        </div>
+
+        <div className='product-container'>
           {
-              productsGlobal?.map(prod => (
-                  <CardProduct key={prod.id} product={prod} />
-              ))
+            productFilter?.map(prod => (
+              <CardProduct key={prod.id} product={prod} />
+            ))
           }
+        </div>
+
       </div>
-      <footer className='footer'>
-          <div><i className='bx bx-copyright'></i>Academlo 2023</div>
-          <div className='social'>
-            <span className='social__info'><i className='bx bxl-twitter'></i></span>
-            <span className='social__info'><i className='bx bxl-linkedin' ></i></span>
-            <span className='social__info'><i className='bx bxl-youtube' ></i></span>
-          </div>
-      </footer>
-    </>
 
-
-
+    </main>
   )
 }
 

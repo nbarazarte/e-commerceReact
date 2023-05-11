@@ -14,14 +14,14 @@ const ProductId = () => {
 
     useEffect(() => {
         getProductById(id)
-    }, [])
+    }, [id])
     
     //console.log(product);
   return (
     <div>
-        <SliderImg product={product}/>
-       <ProductIdInfo product={product}/>
-       <SimilarProducts product={product} />
+      <SliderImg product={product}/>
+      <ProductIdInfo product={product}/>
+      <SimilarProducts product={product} />
     </div>
   )
 }
